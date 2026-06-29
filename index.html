@@ -317,6 +317,8 @@
       .img-single-wrap { height: 420px; }
       .port-grid { grid-template-columns: repeat(5, 1fr); }
       .port-grid .img-frame:nth-child(6) { display: none; }
+      .port-grid .img-frame:nth-child(3) { order: 0; }
+      .port-grid .img-frame:nth-child(4) { order: 0; }
       .svc-grid { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin-left: auto; margin-right: auto; }
     }
 
@@ -327,14 +329,18 @@
     .lb { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
     .lb.open { display: flex; }
     .lb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.92); cursor: pointer; }
-    .lb-img-wrap { position: relative; z-index: 2; max-width: 92vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+    .lb-img-wrap { position: relative; z-index: 2; max-width: 88vw; max-height: 86vh; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 4px 20px rgba(0,0,0,0.5); }
     .lb-img-wrap img { max-width: 92vw; max-height: 90vh; width: auto; height: auto; object-fit: contain; display: block; pointer-events: none; user-select: none; -webkit-user-select: none; }
     .lb-close { position: fixed; top: 20px; right: 24px; z-index: 3; background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; line-height: 1; padding: 8px; opacity: 0.75; }
     .lb-close:hover { opacity: 1; }
-    .lb-prev, .lb-next { position: fixed; top: 50%; z-index: 3; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 56px; cursor: pointer; padding: 8px 18px; opacity: 0.55; line-height: 1; }
+    .lb-prev, .lb-next { display: none; }
     .lb-prev:hover, .lb-next:hover { opacity: 1; }
     .lb-prev { left: 8px; }
     .lb-next { right: 8px; }
+
+    /* Latest grid mobile order: 1,2,4,3,5,6 */
+    .port-grid .img-frame:nth-child(3) { order: 4; }
+    .port-grid .img-frame:nth-child(4) { order: 3; }
 
     /* ── IMAGE PROTECTION ── */
     .img-frame { -webkit-user-select: none; user-select: none; }
@@ -414,7 +420,7 @@
     <p class="welcome-body fu">We guide the entire process — from the big decisions to the smallest touches — so every element comes together as a true reflection of your story. Because it's never just the party that matters.</p>
   </section>
 
-  <div class="img-single-wrap fu"><img class="img-single-img" src="images/single-1.jpg" alt="Event setup"/></div>
+  <div class="img-single-wrap fu" data-lb="images/single-1.jpg" style="cursor:pointer;"><img class="img-single-img" src="images/single-1.jpg" alt="Event setup" draggable="false"/></div>
 
   <!-- ════ PROCESS ════ -->
   <section class="section process">
