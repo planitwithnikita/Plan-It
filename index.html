@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Plan It with Nikita — Event Planning, Organisation &amp; Execution</title>
+  <title>PlanIt with Nikita — Event Planning, Organisation &amp; Execution</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     @font-face {
@@ -177,7 +177,7 @@
       overflow: hidden;
       gap: 40px;
     }
-    .hero-floral { position: absolute; inset: 0; z-index: 0; animation: heroKenBurns 26s ease-in-out infinite alternate; background: url('images/hero-bg.jpg') center/cover no-repeat; }
+    .hero-floral { position: absolute; inset: 0; z-index: 0; animation: heroKenBurns 26s ease-in-out infinite alternate; background: url('images/hero-1.jpg') center/cover no-repeat; }
     .hero-glass { position: absolute; inset: 0; z-index: 1; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
     .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; gap: 28px; }
 
@@ -253,7 +253,7 @@
     .svc-teaser { background: var(--card); }
     .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
     .svc-card { display: flex; flex-direction: column; border: 1px solid rgba(43,39,36,0.12); border-radius: 2px; overflow: hidden; text-decoration: none; color: var(--dark); }
-    .svc-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .svc-card-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .svc-card:hover .svc-card-img { transform: scale(1.06); }
     .svc-card-body { display: flex; flex-direction: column; justify-content: space-between; gap: 10px; padding: 16px 14px; flex: 1; }
     .svc-card-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(17px,4.5vw,20px); font-weight: 400; line-height: 1.3; }
@@ -264,7 +264,7 @@
     /* ── PORTFOLIO TEASER ── */
     .port-teaser { background: var(--ivory); padding: 64px 0; }
     .port-teaser .section-tight { padding: 0 24px 32px; }
-    .port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 0 24px; max-width: 720px; margin: 0 auto; }
+    .port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
     .port-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
     .port-cta { text-align: center; margin-top: 28px; padding: 0 24px; }
 
@@ -273,7 +273,7 @@
     .testimonial .section-tight { padding: 0 24px 32px; text-align: center; }
     .testimonial-carousel { position: relative; max-width: 720px; margin: 0 auto; padding: 0 24px; }
     .testimonial-card { display: none; position: relative; background: var(--ivory); border: 1px solid rgba(43,39,36,0.08); border-radius: 2px; padding: 56px 28px 48px; text-align: center; overflow: hidden; }
-    .testimonial-card::before { content: ''; position: absolute; inset: 0; background: url('images/hero-bg.jpg') center/cover no-repeat; opacity: 0.14; z-index: 0; }
+    .testimonial-card::before { content: ''; position: absolute; inset: 0; background: url('images/hero-1.jpg') center/cover no-repeat; opacity: 0.14; z-index: 0; }
     .testimonial-card > * { position: relative; z-index: 1; }
     .testimonial-card.active { display: block; animation: fadeIn 0.4s ease both; }
     .quote-mark-open { position: absolute; top: 6px; left: 20px; font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 600; color: var(--dark); opacity: 0.12; line-height: 1; pointer-events: none; }
@@ -312,8 +312,8 @@
       .img-strip { grid-template-columns: repeat(5, 1fr); }
       .img-strip img:nth-child(5) { display: block; }
       .img-single-wrap { height: 420px; }
-      .port-grid { grid-template-columns: repeat(4, 1fr); }
-      .svc-grid { grid-template-columns: repeat(2, 1fr); max-width: 600px; margin-left: auto; margin-right: auto; }
+      .port-grid { grid-template-columns: repeat(5, 1fr); }
+      .svc-grid { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin-left: auto; margin-right: auto; }
     }
 
     @media (max-width: 480px) {
@@ -326,8 +326,8 @@
   <div class="topbar-wrap">
     <header class="topbar">
       <a href="index.html" class="topbar-logo">
-        <img src="images/logo.jpg" alt="Plan It with Nikita"/>
-        <span class="topbar-wordmark">Plan it with Nikita</span>
+        <img src="images/topbar-1.jpg" alt="PlanIt with Nikita"/>
+        <span class="topbar-wordmark">PlanIt with Nikita</span>
       </a>
       <nav class="topbar-links">
         <a href="index.html" class="on">Home</a>
@@ -372,7 +372,7 @@
 
   <!-- ════ WELCOME ════ -->
   <section class="section welcome">
-    <span class="eyebrow fu">Welcome to Plan It with Nikita</span>
+    <span class="eyebrow fu">Welcome to PlanIt with Nikita</span>
     <h2 class="section-title fu">A planning &amp; design team turning <em>every kind of celebration</em> into a story worth telling.</h2>
     <p class="welcome-body fu">From the smallest detail to the grandest gesture, we hold the vision so you can hold the <em>moment</em>.</p>
   </section>
@@ -393,7 +393,7 @@
     <p class="welcome-body fu">We guide the entire process — from the big decisions to the smallest touches — so every element comes together as a true reflection of your story. Because it's never just the party that matters.</p>
   </section>
 
-  <div class="img-single-wrap fu"><img class="img-single-img" src="images/event-setup.jpg" alt="Event setup"/></div>
+  <div class="img-single-wrap fu"><img class="img-single-img" src="images/single-1.jpg" alt="Event setup"/></div>
 
   <!-- ════ PROCESS ════ -->
   <section class="section process">
@@ -429,7 +429,7 @@
     <h2 class="section-title fu">Every kind of celebration, <em>designed with intention</em></h2>
     <div class="svc-grid">
       <a href="services.html" class="svc-card fu">
-        <img class="svc-card-img" src="images/svc-weddings.jpg" alt="Wedding decor"/>
+        <img class="svc-card-img" src="images/services-1.jpg" alt="Wedding decor"/>
         <div class="svc-card-body">
           <span class="svc-card-name">Weddings</span>
           <span class="svc-card-desc">Full planning and design, from the first look to the last dance.</span>
@@ -437,7 +437,7 @@
         </div>
       </a>
       <a href="services.html" class="svc-card fu">
-        <img class="svc-card-img" src="images/svc-birthday.jpg" alt="Milestone birthday decor"/>
+        <img class="svc-card-img" src="images/services-2.jpg" alt="Milestone birthday decor"/>
         <div class="svc-card-body">
           <span class="svc-card-name">Birthday &amp; Milestones</span>
           <span class="svc-card-desc">Milestone birthdays and anniversaries, designed around you.</span>
@@ -445,7 +445,7 @@
         </div>
       </a>
       <a href="services.html" class="svc-card fu">
-        <img class="svc-card-img" src="images/svc-social.jpg" alt="Social gathering setup"/>
+        <img class="svc-card-img" src="images/services-3.jpg" alt="Social gathering setup"/>
         <div class="svc-card-body">
           <span class="svc-card-name">Social Gatherings</span>
           <span class="svc-card-desc">Dinners, parties, and get-togethers that feel effortless.</span>
@@ -453,7 +453,7 @@
         </div>
       </a>
       <a href="services.html" class="svc-card fu">
-        <img class="svc-card-img" src="images/svc-corporate.jpg" alt="Corporate event decor"/>
+        <img class="svc-card-img" src="images/services-4.jpg" alt="Corporate event decor"/>
         <div class="svc-card-body">
           <span class="svc-card-name">Corporate Events</span>
           <span class="svc-card-desc">Launches, offsites, and brand moments, planned end to end.</span>
@@ -471,10 +471,11 @@
       <h2 class="section-title fu">A glimpse into <em>moments we've designed</em></h2>
     </div>
     <div class="port-grid fu">
-      <img src="images/event-setup.jpg" alt="Portfolio"/>
-      <img src="images/portfolio-teaser-1.jpg" alt="Portfolio"/>
-      <img src="images/event-setup.jpg" alt="Portfolio"/>
-      <img src="images/portfolio-teaser-1.jpg" alt="Portfolio"/>
+      <img src="images/latest-1.jpg" alt="Portfolio"/>
+      <img src="images/latest-2.jpg" alt="Portfolio"/>
+      <img src="images/latest-3.jpg" alt="Portfolio"/>
+      <img src="images/latest-4.jpg" alt="Portfolio"/>
+      <img src="images/latest-5.jpg" alt="Portfolio"/>
     </div>
     <div class="port-cta fu"><a href="portfolio.html" class="cta cta-secondary">View Full Portfolio</a></div>
   </section>
@@ -528,7 +529,7 @@
 
   <!-- ════ FINAL CTA ════ -->
   <section class="final-cta">
-    <div class="final-cta-bg" style="background-image:url('images/hero-bg.jpg')"></div>
+    <div class="final-cta-bg" style="background-image:url('images/hero-1.jpg')"></div>
     <div class="final-cta-glass"></div>
     <div class="final-cta-content">
     <span class="eyebrow fu">Let's create together</span>
