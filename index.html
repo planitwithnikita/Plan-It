@@ -274,11 +274,11 @@
     /* ── TESTIMONIALS ── */
     .testimonial { background: var(--card); padding: 64px 0; }
     .testimonial .section-tight { padding: 0 24px 32px; text-align: center; }
-    .testimonial-carousel { position: relative; max-width: 720px; margin: 0 auto; padding: 0 24px; overflow: hidden; }
+    .testimonial-carousel { position: relative; max-width: 720px; margin: 0 auto; padding: 0 24px; overflow: hidden; display: flex; flex-direction: column; }
     .testimonial-card { display: none; position: relative; background: var(--ivory); border: 1px solid rgba(43,39,36,0.08); border-radius: 2px; padding: 56px 28px 48px; text-align: center; overflow: hidden; }
     .testimonial-card::before { content: ''; position: absolute; inset: 0; background: url('images/hero-1.jpg') center/cover no-repeat; opacity: 0.14; z-index: 0; }
     .testimonial-card > * { position: relative; z-index: 1; }
-    .testimonial-card.active { display: block; }
+    .testimonial-card.active { display: flex; flex-direction: column; justify-content: center; flex: 1; }
     .testimonial-card.slide-in-left  { animation: slideInLeft  0.45s cubic-bezier(0.16,1,0.3,1) both; }
     .testimonial-card.slide-in-right { animation: slideInRight 0.45s cubic-bezier(0.16,1,0.3,1) both; }
     @keyframes slideInLeft  { from { opacity: 0; transform: translateX(24px);  } to { opacity: 1; transform: translateX(0); } }
@@ -522,31 +522,31 @@
     <div class="testimonial-carousel fu" id="testimonialCarousel">
       <div class="testimonial-card active">
         <div class="quote-mark-open">“</div>
-        <p class="quote-text">Every detail felt personal. We didn't have to manage a single thing on the day.</p>
+        <p class="quote-text">Every detail felt personal, right down to the small touches we didn't even think to ask for. We didn't have to manage a single thing on the day, and that gave us the space to actually be present in our own wedding.</p>
         <span class="quote-author">A Spring Wedding</span>
         <div class="quote-mark-close">”</div>
       </div>
       <div class="testimonial-card">
         <div class="quote-mark-open">“</div>
-        <p class="quote-text">The execution was flawless. Guests were still talking about it weeks later.</p>
+        <p class="quote-text">The execution was flawless from start to finish. Guests were still talking about it weeks later, asking who planned it. It felt less like a vendor and more like having a friend quietly handle everything in the background.</p>
         <span class="quote-author">A 50th Birthday</span>
         <div class="quote-mark-close">”</div>
       </div>
       <div class="testimonial-card">
         <div class="quote-mark-open">“</div>
-        <p class="quote-text">From the first call to the final toast, the planning was completely seamless.</p>
+        <p class="quote-text">From the first call to the final toast, the planning was completely seamless, even with most of it happening across two cities. Every detail translated exactly the way we'd imagined it, down to the last flower.</p>
         <span class="quote-author">A Destination Wedding</span>
         <div class="quote-mark-close">”</div>
       </div>
       <div class="testimonial-card">
         <div class="quote-mark-open">“</div>
-        <p class="quote-text">They understood our vision immediately and brought it to life better than we imagined.</p>
+        <p class="quote-text">They understood our vision immediately and brought it to life better than we imagined, balancing our brand guidelines with something that still felt warm and human. Our leadership team has not stopped talking about it.</p>
         <span class="quote-author">A Corporate Gala</span>
         <div class="quote-mark-close">”</div>
       </div>
       <div class="testimonial-card">
         <div class="quote-mark-open">“</div>
-        <p class="quote-text">Calm, organised, and completely on top of every detail. Exactly what we needed.</p>
+        <p class="quote-text">Calm, organised, and completely on top of every detail, even the ones we forgot to mention. Exactly what we needed for a celebration that felt effortless to us and unforgettable to everyone who was there.</p>
         <span class="quote-author">An Engagement Celebration</span>
         <div class="quote-mark-close">”</div>
       </div>
@@ -640,20 +640,27 @@
     var tCards = tCarousel ? tCarousel.querySelectorAll('.testimonial-card') : [];
 
     function lockCarouselHeight() {
-      if (!tCards.length) return;
+      if (!tCards.length || !tCarousel) return;
       var maxH = 0;
+      // Inner content width = carousel width minus its own left/right padding
+      var cs = window.getComputedStyle(tCarousel);
+      var innerWidth = tCarousel.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
       tCards.forEach(function(card) {
-        var wasActive = card.classList.contains('active');
-        var prevDisplay = card.style.display;
-        card.style.display = 'block';
-        card.style.position = 'absolute';
-        card.style.visibility = 'hidden';
-        maxH = Math.max(maxH, card.offsetHeight);
-        card.style.position = '';
-        card.style.visibility = '';
-        card.style.display = wasActive ? 'block' : prevDisplay;
+        var clone = card.cloneNode(true);
+        clone.classList.add('active');
+        clone.classList.remove('slide-in-left', 'slide-in-right');
+        clone.style.position = 'absolute';
+        clone.style.visibility = 'hidden';
+        clone.style.pointerEvents = 'none';
+        clone.style.top = '0';
+        clone.style.left = '0';
+        clone.style.minHeight = '0';
+        clone.style.width = innerWidth + 'px';
+        tCarousel.appendChild(clone);
+        maxH = Math.max(maxH, clone.offsetHeight);
+        tCarousel.removeChild(clone);
       });
-      tCarousel.style.minHeight = maxH + 'px';
+      if (maxH > 0) tCarousel.style.minHeight = maxH + 'px';
     }
     lockCarouselHeight();
     window.addEventListener('resize', lockCarouselHeight);
