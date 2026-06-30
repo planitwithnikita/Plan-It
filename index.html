@@ -274,15 +274,15 @@
     /* ── TESTIMONIALS ── */
     .testimonial { background: var(--card); padding: 64px 0; }
     .testimonial .section-tight { padding: 0 24px 32px; text-align: center; }
-    .testimonial-carousel { position: relative; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .testimonial-carousel { position: relative; max-width: 720px; margin: 0 auto; padding: 0 24px; overflow: hidden; }
     .testimonial-card { display: none; position: relative; background: var(--ivory); border: 1px solid rgba(43,39,36,0.08); border-radius: 2px; padding: 56px 28px 48px; text-align: center; overflow: hidden; }
     .testimonial-card::before { content: ''; position: absolute; inset: 0; background: url('images/hero-1.jpg') center/cover no-repeat; opacity: 0.14; z-index: 0; }
     .testimonial-card > * { position: relative; z-index: 1; }
     .testimonial-card.active { display: block; }
-    .testimonial-card.slide-in-left  { animation: slideInLeft  0.35s cubic-bezier(0.25,0.46,0.45,0.94) both; }
-    .testimonial-card.slide-in-right { animation: slideInRight 0.35s cubic-bezier(0.25,0.46,0.45,0.94) both; }
-    @keyframes slideInLeft  { from { opacity: 0; transform: translateX(48px);  } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideInRight { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: translateX(0); } }
+    .testimonial-card.slide-in-left  { animation: slideInLeft  0.45s cubic-bezier(0.16,1,0.3,1) both; }
+    .testimonial-card.slide-in-right { animation: slideInRight 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes slideInLeft  { from { opacity: 0; transform: translateX(24px);  } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .quote-mark-open { position: absolute; top: 6px; left: 20px; font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 600; color: #000; opacity: 0.12; line-height: 1; pointer-events: none; }
     .quote-mark-close { position: absolute; bottom: 6px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 600; color: #000; opacity: 0.12; line-height: 1; pointer-events: none; }
@@ -638,6 +638,25 @@
     var tCarousel = document.getElementById('testimonialCarousel');
     var tDots = document.querySelectorAll('#testimonialDots .dot');
     var tCards = tCarousel ? tCarousel.querySelectorAll('.testimonial-card') : [];
+
+    function lockCarouselHeight() {
+      if (!tCards.length) return;
+      var maxH = 0;
+      tCards.forEach(function(card) {
+        var wasActive = card.classList.contains('active');
+        var prevDisplay = card.style.display;
+        card.style.display = 'block';
+        card.style.position = 'absolute';
+        card.style.visibility = 'hidden';
+        maxH = Math.max(maxH, card.offsetHeight);
+        card.style.position = '';
+        card.style.visibility = '';
+        card.style.display = wasActive ? 'block' : prevDisplay;
+      });
+      tCarousel.style.minHeight = maxH + 'px';
+    }
+    lockCarouselHeight();
+    window.addEventListener('resize', lockCarouselHeight);
     var currentIndex = 0;
     function showTestimonial(i) {
       var dir = i > currentIndex ? 'slide-in-left' : 'slide-in-right';
