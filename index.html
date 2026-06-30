@@ -278,7 +278,12 @@
     .testimonial-card { display: none; position: relative; background: var(--ivory); border: 1px solid rgba(43,39,36,0.08); border-radius: 2px; padding: 56px 28px 48px; text-align: center; overflow: hidden; }
     .testimonial-card::before { content: ''; position: absolute; inset: 0; background: url('images/hero-1.jpg') center/cover no-repeat; opacity: 0.14; z-index: 0; }
     .testimonial-card > * { position: relative; z-index: 1; }
-    .testimonial-card.active { display: block; animation: fadeIn 0.4s ease both; }
+    .testimonial-card.active { display: block; }
+    .testimonial-card.slide-in-left  { animation: slideInLeft  0.35s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    .testimonial-card.slide-in-right { animation: slideInRight 0.35s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    @keyframes slideInLeft  { from { opacity: 0; transform: translateX(48px);  } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .quote-mark-open { position: absolute; top: 6px; left: 20px; font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 600; color: #000; opacity: 0.12; line-height: 1; pointer-events: none; }
     .quote-mark-close { position: absolute; bottom: 6px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 600; color: #000; opacity: 0.12; line-height: 1; pointer-events: none; }
     .quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(17px,4.4vw,21px); line-height: 1.6; color: #000; margin: 12px 0 20px; position: relative; }
@@ -635,8 +640,17 @@
     var tCards = tCarousel ? tCarousel.querySelectorAll('.testimonial-card') : [];
     var currentIndex = 0;
     function showTestimonial(i) {
+      var dir = i > currentIndex ? 'slide-in-left' : 'slide-in-right';
       currentIndex = i;
-      tCards.forEach(function(card, idx) { card.classList.toggle('active', idx === i); });
+      tCards.forEach(function(card, idx) {
+        if (idx === i) {
+          card.classList.remove('slide-in-left', 'slide-in-right');
+          void card.offsetWidth; // force reflow to restart animation
+          card.classList.add('active', dir);
+        } else {
+          card.classList.remove('active', 'slide-in-left', 'slide-in-right');
+        }
+      });
       tDots.forEach(function(dot, idx) { dot.classList.toggle('active', idx === i); });
     }
     tDots.forEach(function(dot) {
