@@ -433,18 +433,15 @@
     .form-submit { margin-top: 8px; align-self: center; border: none; cursor: pointer; }
 
     /* ── GALLERY PAGE ── */
-    .gallery-page { max-width: 1180px; margin: 0 auto; padding: 48px 24px 72px; }
-    .gallery-title {
-      font-family: 'Cormorant Garamond', serif; font-weight: 400;
-      font-size: clamp(28px, 6vw, 40px); letter-spacing: 0.04em;
-      color: #000; text-transform: uppercase;
-      padding-bottom: 18px; border-bottom: 1px solid rgba(43,39,36,0.25);
-      margin-bottom: 44px;
+    .gallery-page { max-width: 1180px; margin: 0 auto; padding: 56px 24px 72px; }
+    .gallery-head { text-align: center; margin-bottom: 8px; }
+    .gallery-section-label {
+      text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #000; margin: 56px 0 20px;
     }
     .gallery-flat { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-flat .img-frame { aspect-ratio: 4/3; }
     @media (min-width: 768px) { .gallery-flat { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
-
   </style>
 </head>
 <body>
@@ -483,27 +480,42 @@
   
   <!-- ════ GALLERY ════ -->
   <section class="gallery-page">
-    <h1 class="gallery-title fu">Photo Gallery</h1>
-    <div class="gallery-flat">
+    <div class="gallery-head">
+      <span class="eyebrow fu">Our work</span>
+      <h1 class="section-title fu">Photo Gallery</h1>
+    </div>
+    <div class="gallery-section-label fu">Weddings and Rituals</div>
+    <div class="gallery-flat fu">
       <div class="img-frame" data-lb="images/latest-1.jpg"><img src="images/latest-1.jpg" alt="Wedding mandap with mirrored aisle" draggable="false"/></div>
       <div class="img-frame" data-lb="images/gallery-1.jpg"><img src="images/gallery-1.jpg" alt="Peacock and Ganesh floral decor" draggable="false"/></div>
       <div class="img-frame" data-lb="images/latest-4.jpg"><img src="images/latest-4.jpg" alt="Mehendi colour smoke over the pool" draggable="false"/></div>
       <div class="img-frame" data-lb="images/services-1b.jpg"><img src="images/services-1b.jpg" alt="Peach-draped wedding reception tent" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-3.jpg"><img src="images/gallery-3.jpg" alt="Candlelit engagement corridor" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-2.jpg"><img src="images/services-2.jpg" alt="75th birthday marquee and balloon arch" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-5.jpg"><img src="images/gallery-5.jpg" alt="Floral wedding stage" draggable="false"/></div>
       <div class="img-frame" data-lb="images/latest-2.jpg"><img src="images/latest-2.jpg" alt="White peacock garden styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-4.jpg"><img src="images/gallery-4.jpg" alt="Diwali entrance in magenta and gold" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/latest-3.jpg"><img src="images/latest-3.jpg" alt="Floral pillar detail" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-3.jpg"><img src="images/services-3.jpg" alt="Candlelit reception table florals" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/services-1.jpg"><img src="images/services-1.jpg" alt="Hanging rose orbs and chandelier" draggable="false"/></div>
       <div class="img-frame" data-lb="images/latest-5.jpg"><img src="images/latest-5.jpg" alt="Hanging rose baubles" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-2.jpg"><img src="images/gallery-2.jpg" alt="Corporate Christmas activation" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-3c.jpg"><img src="images/services-3c.jpg" alt="Stage and patterned dance floor" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-2b.jpg"><img src="images/services-2b.jpg" alt="Blue and gold table styling" draggable="false"/></div>
       <div class="img-frame" data-lb="images/latest-6.jpg"><img src="images/latest-6.jpg" alt="Outdoor reception tent at dusk" draggable="false"/></div>
+    </div>
+    <div class="gallery-section-label fu">Birthdays and Milestones</div>
+    <div class="gallery-flat fu">
+      <div class="img-frame" data-lb="images/services-2.jpg"><img src="images/services-2.jpg" alt="75th birthday marquee and balloon arch" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/services-2b.jpg"><img src="images/services-2b.jpg" alt="Blue and gold table styling" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-3.jpg"><img src="images/gallery-3.jpg" alt="Candlelit engagement corridor" draggable="false"/></div>
+    </div>
+    <div class="gallery-section-label fu">Social Gatherings</div>
+    <div class="gallery-flat fu">
+      <div class="img-frame" data-lb="images/gallery-4.jpg"><img src="images/gallery-4.jpg" alt="Diwali entrance in magenta and gold" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/services-3.jpg"><img src="images/services-3.jpg" alt="Candlelit reception table florals" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/services-3c.jpg"><img src="images/services-3c.jpg" alt="Stage and patterned dance floor" draggable="false"/></div>
+    </div>
+    <div class="gallery-section-label fu">Corporate Events</div>
+    <div class="gallery-flat fu">
+      <div class="img-frame" data-lb="images/gallery-2.jpg"><img src="images/gallery-2.jpg" alt="Corporate Christmas activation" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/services-4b.jpg"><img src="images/services-4b.jpg" alt="Corporate holiday tree styling" draggable="false"/></div>
     </div>
   </section>
 
-<!-- ════ FINAL CTA ════ -->
+  <!-- ════ FINAL CTA ════ -->
   <section class="final-cta">
     <div class="final-cta-bg" style="background-image:url('images/hero-1.jpg')"></div>
     <div class="final-cta-glass"></div>
