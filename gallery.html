@@ -338,10 +338,11 @@
     .lb-img-wrap img { max-width: 92vw; max-height: 90vh; width: auto; height: auto; object-fit: contain; display: block; pointer-events: none; user-select: none; -webkit-user-select: none; }
     .lb-close { position: fixed; top: 20px; right: 24px; z-index: 3; background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; line-height: 1; padding: 8px; opacity: 0.75; }
     .lb-close:hover { opacity: 1; }
-    .lb-prev, .lb-next { display: none; }
+    .lb-prev, .lb-next { position: fixed; top: 50%; z-index: 3; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 44px; cursor: pointer; padding: 8px 18px; opacity: 0.6; line-height: 1; transition: opacity 0.2s; }
     .lb-prev:hover, .lb-next:hover { opacity: 1; }
-    .lb-prev { left: 8px; }
-    .lb-next { right: 8px; }
+    .lb-prev { left: 4px; }
+    .lb-next { right: 4px; }
+    @media (min-width: 768px) { .lb-prev { left: 16px; } .lb-next { right: 16px; } }
 
     /* Latest grid mobile order: 1,2,4,3,5,6 */
     .port-grid .img-frame:nth-child(3) { order: 4; }
@@ -433,15 +434,29 @@
     .form-submit { margin-top: 8px; align-self: center; border: none; cursor: pointer; }
 
     /* ── GALLERY PAGE ── */
-    .gallery-page { max-width: 1180px; margin: 0 auto; padding: 56px 24px 72px; }
-    .gallery-head { text-align: center; margin-bottom: 8px; }
+    .gallery-page { max-width: 1180px; margin: 0 auto; padding: 128px 24px 72px; }
+    .gallery-title { font-family: 'Kalufonia', 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(34px, 8vw, 48px); line-height: 1.2; color: #000; text-align: center; margin: 0 auto; }
+
+    .gallery-head { text-align: center; margin-bottom: 0; }
+    .gallery-section { margin-top: 56px; padding-top: 56px; border-top: 1px solid rgba(43,39,36,0.12); }
+    .gallery-section-header { text-align: center; max-width: 520px; margin: 0 auto 28px; }
     .gallery-section-label {
-      text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
-      color: #000; margin: 56px 0 20px;
+      display: block; font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: clamp(22px, 5vw, 28px); letter-spacing: 0.02em;
+      color: #000; margin-bottom: 12px;
     }
+    .gallery-section-desc { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.7; }
+
+    .gallery-hero-frame { aspect-ratio: 16/10; margin-bottom: 16px; }
+
     .gallery-flat { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .gallery-flat .img-frame { aspect-ratio: 4/3; }
-    @media (min-width: 768px) { .gallery-flat { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+    .gallery-flat .img-frame { aspect-ratio: 1/1; }
+    @media (min-width: 768px) {
+      .gallery-page { padding-top: 156px; }
+      .gallery-section { margin-top: 72px; padding-top: 72px; }
+      .gallery-hero-frame { aspect-ratio: 21/9; margin-bottom: 20px; }
+      .gallery-flat { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -482,36 +497,67 @@
   <section class="gallery-page">
     <div class="gallery-head">
       <span class="eyebrow fu">Our work</span>
-      <h1 class="section-title fu">Photo Gallery</h1>
+      <h1 class="gallery-title fu">Gallery</h1>
     </div>
-    <div class="gallery-section-label fu">Weddings and Rituals</div>
-    <div class="gallery-flat fu">
-      <div class="img-frame" data-lb="images/latest-1.jpg"><img src="images/latest-1.jpg" alt="Wedding mandap with mirrored aisle" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-1.jpg"><img src="images/gallery-1.jpg" alt="Peacock and Ganesh floral decor" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/latest-4.jpg"><img src="images/latest-4.jpg" alt="Mehendi colour smoke over the pool" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-1b.jpg"><img src="images/services-1b.jpg" alt="Peach-draped wedding reception tent" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-5.jpg"><img src="images/gallery-5.jpg" alt="Floral wedding stage" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/latest-2.jpg"><img src="images/latest-2.jpg" alt="White peacock garden styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-1.jpg"><img src="images/services-1.jpg" alt="Hanging rose orbs and chandelier" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/latest-5.jpg"><img src="images/latest-5.jpg" alt="Hanging rose baubles" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/latest-6.jpg"><img src="images/latest-6.jpg" alt="Outdoor reception tent at dusk" draggable="false"/></div>
+    <div class="gallery-section fu">
+      <div class="gallery-section-header">
+        <span class="gallery-section-label">Weddings and Rituals</span>
+        <p class="gallery-section-desc">Mandaps, mehendi colour bursts, and the quiet in-between moments — the weddings and rituals we've brought to life across India.</p>
+      </div>
+      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-weddings-mainimage.jpg"><img src="images/gallery-weddings-mainimage.jpg" alt="Peacock and Ganesh floral mandap" draggable="false"/></div>
+      <div class="gallery-flat">
+      <div class="img-frame" data-lb="images/gallery-weddings-image-1.jpg"><img src="images/gallery-weddings-image-1.jpg" alt="Floral wedding stage" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-weddings-image-2.jpg"><img src="images/gallery-weddings-image-2.jpg" alt="White peacock garden styling" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-weddings-image-3.jpg"><img src="images/gallery-weddings-image-3.jpg" alt="Mehendi colour smoke over the pool" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-weddings-image-4.jpg"><img src="images/gallery-weddings-image-4.jpg" alt="Hanging rose baubles" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-weddings-image-5.jpg"><img src="images/gallery-weddings-image-5.jpg" alt="Hanging rose orbs and chandelier" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-weddings-image-6.jpg"><img src="images/gallery-weddings-image-6.jpg" alt="Peach-draped wedding reception tent" draggable="false"/></div>
+      </div>
     </div>
-    <div class="gallery-section-label fu">Birthdays and Milestones</div>
-    <div class="gallery-flat fu">
-      <div class="img-frame" data-lb="images/services-2.jpg"><img src="images/services-2.jpg" alt="75th birthday marquee and balloon arch" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-2b.jpg"><img src="images/services-2b.jpg" alt="Blue and gold table styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-3.jpg"><img src="images/gallery-3.jpg" alt="Candlelit engagement corridor" draggable="false"/></div>
+    <div class="gallery-section fu">
+      <div class="gallery-section-header">
+        <span class="gallery-section-label">Birthdays and Milestones</span>
+        <p class="gallery-section-desc">From milestone birthdays to engagement celebrations, these are the moments we've helped families mark in style.</p>
+      </div>
+      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-birthdays-mainimage.jpg"><img src="images/gallery-birthdays-mainimage.jpg" alt="75th birthday marquee and balloon arch" draggable="false"/></div>
+      <div class="gallery-flat">
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-1.jpg"><img src="images/gallery-birthdays-image-1.jpg" alt="Blue and gold table styling" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-2.jpg"><img src="images/gallery-birthdays-image-2.jpg" alt="Candlelit engagement corridor" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-3.jpg"><img src="images/gallery-birthdays-image-3.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-4.jpg"><img src="images/gallery-birthdays-image-4.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-5.jpg"><img src="images/gallery-birthdays-image-5.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-birthdays-image-6.jpg"><img src="images/gallery-birthdays-image-6.jpg" alt="Add photo" draggable="false"/></div>
+      </div>
     </div>
-    <div class="gallery-section-label fu">Social Gatherings</div>
-    <div class="gallery-flat fu">
-      <div class="img-frame" data-lb="images/gallery-4.jpg"><img src="images/gallery-4.jpg" alt="Diwali entrance in magenta and gold" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-3.jpg"><img src="images/services-3.jpg" alt="Candlelit reception table florals" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-3c.jpg"><img src="images/services-3c.jpg" alt="Stage and patterned dance floor" draggable="false"/></div>
+    <div class="gallery-section fu">
+      <div class="gallery-section-header">
+        <span class="gallery-section-label">Social Gatherings</span>
+        <p class="gallery-section-desc">Diwali evenings, festive dinners, and gatherings designed to bring people together beautifully.</p>
+      </div>
+      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-social-mainimage.jpg"><img src="images/gallery-social-mainimage.jpg" alt="Diwali entrance in magenta and gold" draggable="false"/></div>
+      <div class="gallery-flat">
+      <div class="img-frame" data-lb="images/gallery-social-image-1.jpg"><img src="images/gallery-social-image-1.jpg" alt="Candlelit reception table florals" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-social-image-2.jpg"><img src="images/gallery-social-image-2.jpg" alt="Stage and patterned dance floor" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-social-image-3.jpg"><img src="images/gallery-social-image-3.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-social-image-4.jpg"><img src="images/gallery-social-image-4.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-social-image-5.jpg"><img src="images/gallery-social-image-5.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-social-image-6.jpg"><img src="images/gallery-social-image-6.jpg" alt="Add photo" draggable="false"/></div>
+      </div>
     </div>
-    <div class="gallery-section-label fu">Corporate Events</div>
-    <div class="gallery-flat fu">
-      <div class="img-frame" data-lb="images/gallery-2.jpg"><img src="images/gallery-2.jpg" alt="Corporate Christmas activation" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/services-4b.jpg"><img src="images/services-4b.jpg" alt="Corporate holiday tree styling" draggable="false"/></div>
+    <div class="gallery-section fu">
+      <div class="gallery-section-header">
+        <span class="gallery-section-label">Corporate Events</span>
+        <p class="gallery-section-desc">Brand activations, holiday décor, and workplace celebrations designed to reflect who our clients are.</p>
+      </div>
+      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-corporate-mainimage.jpg"><img src="images/gallery-corporate-mainimage.jpg" alt="Corporate Christmas activation" draggable="false"/></div>
+      <div class="gallery-flat">
+      <div class="img-frame" data-lb="images/gallery-corporate-image-1.jpg"><img src="images/gallery-corporate-image-1.jpg" alt="Corporate holiday tree styling" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-corporate-image-2.jpg"><img src="images/gallery-corporate-image-2.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-corporate-image-3.jpg"><img src="images/gallery-corporate-image-3.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-corporate-image-4.jpg"><img src="images/gallery-corporate-image-4.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-corporate-image-5.jpg"><img src="images/gallery-corporate-image-5.jpg" alt="Add photo" draggable="false"/></div>
+      <div class="img-frame" data-lb="images/gallery-corporate-image-6.jpg"><img src="images/gallery-corporate-image-6.jpg" alt="Add photo" draggable="false"/></div>
+      </div>
     </div>
   </section>
 
