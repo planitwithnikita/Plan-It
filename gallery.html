@@ -458,6 +458,34 @@
       .gallery-hero-frame { aspect-ratio: 21/9; margin-bottom: 20px; }
       .gallery-flat { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     }
+
+    /* ── GALLERY TABS ── */
+    .gallery-tabs {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px;
+      margin: 40px auto 0; max-width: 900px;
+      border-bottom: 1px solid rgba(43,39,36,0.12);
+    }
+    .gallery-tab-btn {
+      font-family: 'Lato', sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid); background: none; border: none; padding: 14px 10px; cursor: pointer;
+      position: relative; transition: color 0.2s; white-space: nowrap;
+    }
+    .gallery-tab-btn:hover { color: #000; }
+    .gallery-tab-btn.active { color: #000; }
+    .gallery-tab-btn.active::after {
+      content: ''; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 2px; background: #000;
+    }
+    .gallery-tab-panel { display: none; }
+    .gallery-tab-panel.active { display: block; }
+    .gallery-tab-desc { text-align: center; max-width: 520px; margin: 32px auto 28px; }
+    .gallery-tab-count { font-family: 'Lato', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); display: block; margin-top: 4px; }
+    .gallery-tab-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 32px; }
+    .gallery-tab-grid .img-frame { aspect-ratio: 1/1; }
+    .gallery-tab-grid .placeholder-slot { opacity: 0.9; transition: opacity 0.2s; }
+    .gallery-tab-grid .placeholder-slot:hover { opacity: 1; }
+    @media (min-width: 600px) { .gallery-tab-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
+    @media (min-width: 900px) { .gallery-tab-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; } }
+    @media (min-width: 768px) { .gallery-tab-btn { font-size: 12px; padding: 16px 18px; } }
   </style>
 </head>
 <body>
@@ -503,64 +531,126 @@
         <p class="welcome-body fu" style="margin-top:0;">A closer look at the weddings, celebrations, and corporate events we've brought to life — in the details that made each one unforgettable.</p>
       </div>
     </div>
-    <div class="gallery-section fu">
-      <div class="gallery-section-header">
-        <span class="gallery-section-label">Weddings and Rituals</span>
-        <p class="gallery-section-desc">Mandaps, mehendi colour bursts, and the quiet in-between moments — the weddings and rituals we've brought to life across India.</p>
-      </div>
-      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-weddings-mainimage.jpg"><img src="images/gallery-weddings-mainimage.jpg" alt="Peacock and Ganesh floral mandap" draggable="false"/></div>
-      <div class="gallery-flat">
-      <div class="img-frame" data-lb="images/gallery-weddings-image-1.jpg"><img src="images/gallery-weddings-image-1.jpg" alt="Floral wedding stage" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-weddings-image-2.jpg"><img src="images/gallery-weddings-image-2.jpg" alt="White peacock garden styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-weddings-image-3.jpg"><img src="images/gallery-weddings-image-3.jpg" alt="Mehendi colour smoke over the pool" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-weddings-image-4.jpg"><img src="images/gallery-weddings-image-4.jpg" alt="Hanging rose baubles" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-weddings-image-5.jpg"><img src="images/gallery-weddings-image-5.jpg" alt="Hanging rose orbs and chandelier" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-weddings-image-6.jpg"><img src="images/gallery-weddings-image-6.jpg" alt="Peach-draped wedding reception tent" draggable="false"/></div>
+    <div class="gallery-tabs fu">
+      <button class="gallery-tab-btn active" data-tab="tab-weddings">Weddings and Rituals</button>
+      <button class="gallery-tab-btn" data-tab="tab-birthdays">Birthdays and Milestones</button>
+      <button class="gallery-tab-btn" data-tab="tab-social">Social Gatherings</button>
+      <button class="gallery-tab-btn" data-tab="tab-corporate">Corporate Events</button>
+    </div>
+
+    <div class="gallery-tab-panel active" id="tab-weddings">
+      <div class="gallery-tab-grid">
+        <div class="img-frame" data-lb="images/gallery-weddings-mainimage.jpg"><img src="images/gallery-weddings-mainimage.jpg" alt="Peacock and Ganesh floral mandap" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-1.jpg"><img src="images/gallery-weddings-image-1.jpg" alt="Floral wedding stage" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-2.jpg"><img src="images/gallery-weddings-image-2.jpg" alt="White peacock garden styling" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-3.jpg"><img src="images/gallery-weddings-image-3.jpg" alt="Mehendi colour smoke over the pool" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-4.jpg"><img src="images/gallery-weddings-image-4.jpg" alt="Hanging rose baubles" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-5.jpg"><img src="images/gallery-weddings-image-5.jpg" alt="Hanging rose orbs and chandelier" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-weddings-image-6.jpg"><img src="images/gallery-weddings-image-6.jpg" alt="Peach-draped wedding reception tent" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-7.jpg"><img src="images/gallery-weddings-image-7.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-8.jpg"><img src="images/gallery-weddings-image-8.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-9.jpg"><img src="images/gallery-weddings-image-9.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-10.jpg"><img src="images/gallery-weddings-image-10.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-11.jpg"><img src="images/gallery-weddings-image-11.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-12.jpg"><img src="images/gallery-weddings-image-12.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-13.jpg"><img src="images/gallery-weddings-image-13.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-14.jpg"><img src="images/gallery-weddings-image-14.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-15.jpg"><img src="images/gallery-weddings-image-15.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-16.jpg"><img src="images/gallery-weddings-image-16.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-17.jpg"><img src="images/gallery-weddings-image-17.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-18.jpg"><img src="images/gallery-weddings-image-18.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-19.jpg"><img src="images/gallery-weddings-image-19.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-20.jpg"><img src="images/gallery-weddings-image-20.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-21.jpg"><img src="images/gallery-weddings-image-21.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-22.jpg"><img src="images/gallery-weddings-image-22.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-weddings-image-23.jpg"><img src="images/gallery-weddings-image-23.jpg" alt="Add weddings and rituals photo" draggable="false" loading="lazy"/></div>
       </div>
     </div>
-    <div class="gallery-section fu">
-      <div class="gallery-section-header">
-        <span class="gallery-section-label">Birthdays and Milestones</span>
-        <p class="gallery-section-desc">From milestone birthdays to engagement celebrations, these are the moments we've helped families mark in style.</p>
-      </div>
-      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-birthdays-mainimage.jpg"><img src="images/gallery-birthdays-mainimage.jpg" alt="Golden Jubilee 50th anniversary backdrop in maroon and gold" draggable="false"/></div>
-      <div class="gallery-flat">
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-1.jpg"><img src="images/gallery-birthdays-image-1.jpg" alt="Blue and gold table styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-2.jpg"><img src="images/gallery-birthdays-image-2.jpg" alt="Candlelit engagement corridor" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-3.jpg"><img src="images/gallery-birthdays-image-3.jpg" alt="Detective-themed birthday balloon garland" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-4.jpg"><img src="images/gallery-birthdays-image-4.jpg" alt="75th birthday marquee numbers with family photo montage" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-5.jpg"><img src="images/gallery-birthdays-image-5.jpg" alt="40th birthday photo booth backdrop with fairy lights" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-birthdays-image-6.jpg"><img src="images/gallery-birthdays-image-6.jpg" alt="Golden Jubilee 50th anniversary display in maroon and gold" draggable="false"/></div>
+
+    <div class="gallery-tab-panel" id="tab-birthdays">
+      <div class="gallery-tab-grid">
+        <div class="img-frame" data-lb="images/gallery-birthdays-mainimage.jpg"><img src="images/gallery-birthdays-mainimage.jpg" alt="Golden Jubilee 50th anniversary backdrop in maroon and gold" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-1.jpg"><img src="images/gallery-birthdays-image-1.jpg" alt="Blue and gold table styling" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-2.jpg"><img src="images/gallery-birthdays-image-2.jpg" alt="Candlelit engagement corridor" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-3.jpg"><img src="images/gallery-birthdays-image-3.jpg" alt="Detective-themed birthday balloon garland" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-4.jpg"><img src="images/gallery-birthdays-image-4.jpg" alt="75th birthday marquee numbers with family photo montage" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-5.jpg"><img src="images/gallery-birthdays-image-5.jpg" alt="40th birthday photo booth backdrop with fairy lights" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-birthdays-image-6.jpg"><img src="images/gallery-birthdays-image-6.jpg" alt="Golden Jubilee 50th anniversary display in maroon and gold" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-7.jpg"><img src="images/gallery-birthdays-image-7.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-8.jpg"><img src="images/gallery-birthdays-image-8.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-9.jpg"><img src="images/gallery-birthdays-image-9.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-10.jpg"><img src="images/gallery-birthdays-image-10.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-11.jpg"><img src="images/gallery-birthdays-image-11.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-12.jpg"><img src="images/gallery-birthdays-image-12.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-13.jpg"><img src="images/gallery-birthdays-image-13.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-14.jpg"><img src="images/gallery-birthdays-image-14.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-15.jpg"><img src="images/gallery-birthdays-image-15.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-16.jpg"><img src="images/gallery-birthdays-image-16.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-17.jpg"><img src="images/gallery-birthdays-image-17.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-18.jpg"><img src="images/gallery-birthdays-image-18.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-19.jpg"><img src="images/gallery-birthdays-image-19.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-20.jpg"><img src="images/gallery-birthdays-image-20.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-21.jpg"><img src="images/gallery-birthdays-image-21.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-22.jpg"><img src="images/gallery-birthdays-image-22.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-birthdays-image-23.jpg"><img src="images/gallery-birthdays-image-23.jpg" alt="Add birthdays and milestones photo" draggable="false" loading="lazy"/></div>
       </div>
     </div>
-    <div class="gallery-section fu">
-      <div class="gallery-section-header">
-        <span class="gallery-section-label">Social Gatherings</span>
-        <p class="gallery-section-desc">Diwali evenings, festive dinners, and gatherings designed to bring people together beautifully.</p>
-      </div>
-      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-social-mainimage.jpg"><img src="images/gallery-social-mainimage.jpg" alt="Diwali entrance in magenta and gold" draggable="false"/></div>
-      <div class="gallery-flat">
-      <div class="img-frame" data-lb="images/gallery-social-image-1.jpg"><img src="images/gallery-social-image-1.jpg" alt="Candlelit reception table florals" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-social-image-2.jpg"><img src="images/gallery-social-image-2.jpg" alt="Stage and patterned dance floor" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-social-image-3.jpg"><img src="images/gallery-social-image-3.jpg" alt="Diwali celebration welcome signage with marigold and jasmine florals" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-social-image-4.jpg"><img src="images/gallery-social-image-4.jpg" alt="Maroon draped reception seating with crystal chandeliers" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-social-image-5.jpg"><img src="images/gallery-social-image-5.jpg" alt="Maroon and gold entrance walkway with gold elephant accents" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-social-image-6.jpg"><img src="images/gallery-social-image-6.jpg" alt="Lounge seating with red and gold cushions under crystal chandeliers" draggable="false"/></div>
+
+    <div class="gallery-tab-panel" id="tab-social">
+      <div class="gallery-tab-grid">
+        <div class="img-frame" data-lb="images/gallery-social-mainimage.jpg"><img src="images/gallery-social-mainimage.jpg" alt="Diwali entrance in magenta and gold" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-1.jpg"><img src="images/gallery-social-image-1.jpg" alt="Candlelit reception table florals" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-2.jpg"><img src="images/gallery-social-image-2.jpg" alt="Stage and patterned dance floor" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-3.jpg"><img src="images/gallery-social-image-3.jpg" alt="Diwali celebration welcome signage with marigold and jasmine florals" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-4.jpg"><img src="images/gallery-social-image-4.jpg" alt="Maroon draped reception seating with crystal chandeliers" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-5.jpg"><img src="images/gallery-social-image-5.jpg" alt="Maroon and gold entrance walkway with gold elephant accents" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-social-image-6.jpg"><img src="images/gallery-social-image-6.jpg" alt="Lounge seating with red and gold cushions under crystal chandeliers" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-7.jpg"><img src="images/gallery-social-image-7.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-8.jpg"><img src="images/gallery-social-image-8.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-9.jpg"><img src="images/gallery-social-image-9.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-10.jpg"><img src="images/gallery-social-image-10.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-11.jpg"><img src="images/gallery-social-image-11.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-12.jpg"><img src="images/gallery-social-image-12.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-13.jpg"><img src="images/gallery-social-image-13.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-14.jpg"><img src="images/gallery-social-image-14.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-15.jpg"><img src="images/gallery-social-image-15.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-16.jpg"><img src="images/gallery-social-image-16.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-17.jpg"><img src="images/gallery-social-image-17.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-18.jpg"><img src="images/gallery-social-image-18.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-19.jpg"><img src="images/gallery-social-image-19.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-20.jpg"><img src="images/gallery-social-image-20.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-21.jpg"><img src="images/gallery-social-image-21.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-22.jpg"><img src="images/gallery-social-image-22.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-social-image-23.jpg"><img src="images/gallery-social-image-23.jpg" alt="Add social gatherings photo" draggable="false" loading="lazy"/></div>
       </div>
     </div>
-    <div class="gallery-section fu">
-      <div class="gallery-section-header">
-        <span class="gallery-section-label">Corporate Events</span>
-        <p class="gallery-section-desc">Brand activations, holiday décor, and workplace celebrations designed to reflect who our clients are.</p>
-      </div>
-      <div class="img-frame gallery-hero-frame" data-lb="images/gallery-corporate-mainimage.jpg"><img src="images/gallery-corporate-mainimage.jpg" alt="Corporate Christmas activation" draggable="false"/></div>
-      <div class="gallery-flat">
-      <div class="img-frame" data-lb="images/gallery-corporate-image-1.jpg"><img src="images/gallery-corporate-image-1.jpg" alt="Corporate holiday tree styling" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-corporate-image-2.jpg"><img src="images/gallery-corporate-image-2.jpg" alt="Women's Day photo backdrop activation" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-corporate-image-3.jpg"><img src="images/gallery-corporate-image-3.jpg" alt="Corporate brand event group photo" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-corporate-image-4.jpg"><img src="images/gallery-corporate-image-4.jpg" alt="Corporate brand launch event photo" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-corporate-image-5.jpg"><img src="images/gallery-corporate-image-5.jpg" alt="Team retreat group photo at the Golden Temple, Amritsar" draggable="false"/></div>
-      <div class="img-frame" data-lb="images/gallery-corporate-image-6.jpg"><img src="images/gallery-corporate-image-6.jpg" alt="Corporate CSR handloom weaving workshop activation" draggable="false"/></div>
+
+    <div class="gallery-tab-panel" id="tab-corporate">
+      <div class="gallery-tab-grid">
+        <div class="img-frame" data-lb="images/gallery-corporate-mainimage.jpg"><img src="images/gallery-corporate-mainimage.jpg" alt="Corporate Christmas activation" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-1.jpg"><img src="images/gallery-corporate-image-1.jpg" alt="Corporate holiday tree styling" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-2.jpg"><img src="images/gallery-corporate-image-2.jpg" alt="Women's Day photo backdrop activation" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-3.jpg"><img src="images/gallery-corporate-image-3.jpg" alt="Corporate brand event group photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-4.jpg"><img src="images/gallery-corporate-image-4.jpg" alt="Corporate brand launch event photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-5.jpg"><img src="images/gallery-corporate-image-5.jpg" alt="Team retreat group photo at the Golden Temple, Amritsar" draggable="false" loading="lazy"/></div>
+        <div class="img-frame" data-lb="images/gallery-corporate-image-6.jpg"><img src="images/gallery-corporate-image-6.jpg" alt="Corporate CSR handloom weaving workshop activation" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-7.jpg"><img src="images/gallery-corporate-image-7.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-8.jpg"><img src="images/gallery-corporate-image-8.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-9.jpg"><img src="images/gallery-corporate-image-9.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-10.jpg"><img src="images/gallery-corporate-image-10.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-11.jpg"><img src="images/gallery-corporate-image-11.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-12.jpg"><img src="images/gallery-corporate-image-12.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-13.jpg"><img src="images/gallery-corporate-image-13.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-14.jpg"><img src="images/gallery-corporate-image-14.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-15.jpg"><img src="images/gallery-corporate-image-15.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-16.jpg"><img src="images/gallery-corporate-image-16.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-17.jpg"><img src="images/gallery-corporate-image-17.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-18.jpg"><img src="images/gallery-corporate-image-18.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-19.jpg"><img src="images/gallery-corporate-image-19.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-20.jpg"><img src="images/gallery-corporate-image-20.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-21.jpg"><img src="images/gallery-corporate-image-21.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-22.jpg"><img src="images/gallery-corporate-image-22.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
+        <div class="img-frame placeholder-slot" data-lb="images/gallery-corporate-image-23.jpg"><img src="images/gallery-corporate-image-23.jpg" alt="Add corporate events photo" draggable="false" loading="lazy"/></div>
       </div>
     </div>
   </section>
@@ -635,6 +725,16 @@
     // ── LIGHTBOX ──
     var lb = document.getElementById('lb');
     var lbImg = document.getElementById('lbImg');
+    // ── GALLERY TABS ──
+    document.querySelectorAll('.gallery-tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.gallery-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.gallery-tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
     var lbFrames = Array.from(document.querySelectorAll('[data-lb]'));
     var lbIndex = 0;
     function lbOpen(i) {
