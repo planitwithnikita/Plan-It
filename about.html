@@ -363,20 +363,26 @@
     var lbImg = document.getElementById('lbImg');
     var lbFrames = Array.from(document.querySelectorAll('[data-lb]'));
     var lbIndex = 0;
+    function lbShow(i) {
+      lbImg.src = lbFrames[i].getAttribute('data-lb');
+      var frameImg = lbFrames[i].querySelector('img');
+      lbImg.alt = frameImg ? frameImg.alt : '';
+    }
     function lbOpen(i) {
       lbIndex = i;
-      lbImg.src = lbFrames[i].getAttribute('data-lb');
+      lbShow(i);
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
     function lbClose() {
       lb.classList.remove('open');
       lbImg.src = '';
+      lbImg.alt = '';
       document.body.style.overflow = '';
     }
     function lbNav(dir) {
       lbIndex = (lbIndex + dir + lbFrames.length) % lbFrames.length;
-      lbImg.src = lbFrames[lbIndex].getAttribute('data-lb');
+      lbShow(lbIndex);
     }
     lbFrames.forEach(function(frame, i) {
       frame.addEventListener('click', function() { lbOpen(i); });
